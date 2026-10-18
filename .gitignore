@@ -1,0 +1,6 @@
+# Собирается командой python3 build.py (на GitHub — автоматически в Actions)
+dist/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/

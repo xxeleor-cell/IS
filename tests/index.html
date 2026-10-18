@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Тесты калькулятора</title>
+<style>
+  body { font: 15px/1.5 system-ui, sans-serif; margin: 32px auto; max-width: 860px; padding: 0 16px; color: #1d2023; background: #fff; }
+  h1 { font-size: 22px; } h2 { font-size: 17px; margin-top: 28px; }
+  li { padding: 6px 0; border-bottom: 1px solid #eee; list-style: none; }
+  ul { padding: 0; }
+  .ok::before { content: "✓ "; color: #1f6b45; font-weight: 700; }
+  .fail::before { content: "✗ "; color: #b3261e; font-weight: 700; }
+  .fail small { display: block; color: #b3261e; white-space: pre-wrap; }
+  #total { font-weight: 700; }
+</style>
+</head>
+<body>
+<h1>Тесты калькулятора</h1>
+<p id="total">Выполняется…</p>
+<div id="out"></div>
+<script type="module">
+  import { engineTests, pricingTests } from './suite.js';
+  const [schema, cases] = await Promise.all([
+    fetch('../content/calculator.json').then((r) => r.json()),
+    fetch('./pricing-cases.json').then((r) => r.json()),
+  ]);
+  const groups = [['Логика анкеты', engineTests(schema)], ['Контрольные примеры формулы', pricingTests(schema, cases)]];
+  let fail = 0, all = 0;
+  document.getElementById('out').innerHTML = groups.map(([title, res]) => {
+    all += res.length; fail += res.filter((r) => !r.ok).length;
+    return `<h2>${title}</h2><ul>${res.map((r) => `<li class="${r.ok ? 'ok' : 'fail'}">${r.name}${r.ok ? '' : `<small>${r.detail}</small>`}</li>`).join('')}</ul>`;
+  }).join('');
+  document.getElementById('total').textContent = fail ? `Провалено: ${fail} из ${all}` : `Все проверки пройдены: ${all}`;
+</script>
+</body>
+</html>

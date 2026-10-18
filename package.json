@@ -1,0 +1,11 @@
+{
+  "name": "country-build-site",
+  "private": true,
+  "type": "module",
+  "description": "Сайт строительной компании. Сборка — python3 build.py, тесты калькулятора — node tests/run.mjs или tests/index.html",
+  "scripts": {
+    "build": "python3 build.py",
+    "serve": "python3 build.py --serve",
+    "test": "node tests/run.mjs"
+  }
+}

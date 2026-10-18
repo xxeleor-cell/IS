@@ -1,0 +1,185 @@
+{
+  "_readme": "Каталог проектов. Чтобы добавить проект — скопируйте объект, задайте уникальный id (латиница, станет адресом /proekty/<id>/), положите фото в src/assets/img/ и запустите build.py. demo:true — карточка помечается как демонстрационная, страница закрывается от индексации и не попадает в sitemap. Уберите demo, когда опубликуете реальный объект. categories — id из categories.json. price — число в рублях или null; публикуйте цену только если она подтверждена. specs — любые дополнительные характеристики. calcPreset — ответы калькулятора для кнопки «Рассчитать похожий».",
+  "items": [
+    {
+      "id": "demo-karkasnyj-dom-s-terrasoj",
+      "published": true,
+      "demo": true,
+      "featured": true,
+      "title": "Каркасный дом с террасой",
+      "categories": ["karkasnye-doma", "derevyannye-doma"],
+      "type": "Жилой дом",
+      "technology": "Каркас",
+      "area": 120,
+      "floors": "1 этаж",
+      "dimensions": "10 × 12 м",
+      "specs": [
+        { "label": "Назначение", "value": "Круглогодичное проживание" },
+        { "label": "Терраса", "value": "Есть" }
+      ],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Одноэтажный дом с открытой планировкой гостиной и кухни и террасой вдоль фасада.",
+      "description": [
+        "Демонстрационная карточка: показывает, как будет выглядеть описание реального проекта. Замените текст, характеристики и фотографии данными построенного объекта или типового проекта компании."
+      ],
+      "images": [
+        { "src": "demo/frame-house-modern", "alt": "Современный одноэтажный дом с деревянными элементами" },
+        { "src": "demo/interior-living", "alt": "Светлая гостиная загородного дома" },
+        { "src": "demo/process-drawings", "alt": "Чертежи и планировка дома на столе" }
+      ],
+      "calcPreset": { "buildingType": "house", "technology": "frame", "floors": "1" }
+    },
+    {
+      "id": "demo-dom-iz-brusa-v-lesu",
+      "published": true,
+      "demo": true,
+      "featured": true,
+      "title": "Дом из бруса в лесу",
+      "categories": ["doma-iz-brusa", "derevyannye-doma"],
+      "type": "Жилой дом",
+      "technology": "Брус",
+      "area": 150,
+      "floors": "2 этажа",
+      "dimensions": "9 × 9 м",
+      "specs": [
+        { "label": "Кровля", "value": "Двускатная" }
+      ],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Компактный двухэтажный дом с открытой древесиной в интерьере.",
+      "description": [
+        "Демонстрационная карточка. Укажите здесь реальные характеристики: вид бруса, сечение, тип фундамента, состав работ, сроки — только те данные, которые компания готова публиковать."
+      ],
+      "images": [
+        { "src": "demo/beam-house-forest", "alt": "Деревянный дом из бруса среди сосен" },
+        { "src": "demo/interior-light", "alt": "Интерьер с мягкой мебелью и большими окнами" }
+      ],
+      "calcPreset": { "buildingType": "house", "technology": "beam", "floors": "2" }
+    },
+    {
+      "id": "demo-brevenchatyj-dom",
+      "published": true,
+      "demo": true,
+      "featured": true,
+      "title": "Бревенчатый дом для зимнего отдыха",
+      "categories": ["doma-iz-brevna", "derevyannye-doma"],
+      "type": "Жилой дом",
+      "technology": "Бревно",
+      "area": 95,
+      "floors": "1 этаж с мансардой",
+      "dimensions": "8 × 10 м",
+      "specs": [],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Дом из бревна с мансардой и большими окнами в сторону леса.",
+      "description": [
+        "Демонстрационная карточка. Фотография — иллюстрация, а не объект компании."
+      ],
+      "images": [
+        { "src": "demo/log-house-snow", "alt": "Бревенчатый дом в заснеженном лесу" },
+        { "src": "demo/hero-cabin", "alt": "Деревянный дом в лесу на закате" }
+      ],
+      "calcPreset": { "buildingType": "house", "technology": "log", "floors": "1.5" }
+    },
+    {
+      "id": "demo-banya-s-terrasoj",
+      "published": true,
+      "demo": true,
+      "featured": true,
+      "title": "Баня с комнатой отдыха",
+      "categories": ["bani"],
+      "type": "Баня",
+      "technology": "Брус",
+      "area": 36,
+      "floors": "1 этаж",
+      "dimensions": "6 × 6 м",
+      "specs": [
+        { "label": "Помещения", "value": "Парная, мойка, комната отдыха" }
+      ],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Компактная баня с парной, мойкой и комнатой отдыха.",
+      "description": [
+        "Демонстрационная карточка. Добавьте реальные данные: тип печи, отделку парной, наличие террасы и санузла."
+      ],
+      "images": [
+        { "src": "demo/banya-cabin", "alt": "Небольшая деревянная постройка у леса" },
+        { "src": "demo/lake-house", "alt": "Деревянный домик на берегу горного озера" }
+      ],
+      "calcPreset": { "buildingType": "banya", "technology": "beam", "floors": "1" }
+    },
+    {
+      "id": "demo-karkasnaya-banya-u-vody",
+      "published": true,
+      "demo": true,
+      "featured": false,
+      "title": "Каркасная баня у воды",
+      "categories": ["bani"],
+      "type": "Баня",
+      "technology": "Каркас",
+      "area": 24,
+      "floors": "1 этаж",
+      "dimensions": "4 × 6 м",
+      "specs": [],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Небольшая каркасная баня с выходом к воде.",
+      "description": [
+        "Демонстрационная карточка."
+      ],
+      "images": [
+        { "src": "demo/lake-house", "alt": "Деревянная постройка на берегу озера в горах" }
+      ],
+      "calcPreset": { "buildingType": "banya", "technology": "frame", "floors": "1" }
+    },
+    {
+      "id": "demo-gostevoj-dom",
+      "published": true,
+      "demo": true,
+      "featured": true,
+      "title": "Гостевой дом на участке",
+      "categories": ["postroyki"],
+      "type": "Гостевой дом",
+      "technology": "Каркас",
+      "area": 30,
+      "floors": "1 этаж",
+      "dimensions": "5 × 6 м",
+      "specs": [],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Небольшой гостевой дом рядом с основным домом.",
+      "description": [
+        "Демонстрационная карточка."
+      ],
+      "images": [
+        { "src": "demo/outbuilding-red", "alt": "Небольшой домик с красными стенами на зелёном участке", "position": "50% 15%" }
+      ],
+      "calcPreset": { "buildingType": "other", "technology": "frame", "floors": "1" }
+    },
+    {
+      "id": "demo-dom-s-kamennym-cokolem",
+      "published": true,
+      "demo": true,
+      "featured": false,
+      "title": "Дом в комбинированной технологии",
+      "categories": ["derevyannye-doma"],
+      "type": "Жилой дом",
+      "technology": "Комбинированная",
+      "area": 180,
+      "floors": "2 этажа",
+      "dimensions": "—",
+      "specs": [],
+      "price": null,
+      "priceNote": "Стоимость рассчитывается индивидуально",
+      "summary": "Пример карточки для объектов из других материалов или с комбинированными стенами.",
+      "description": [
+        "Демонстрационная карточка. Сайт не ограничен деревянным строительством: добавьте сюда объекты из других материалов, если компания их строит."
+      ],
+      "images": [
+        { "src": "demo/stone-cottage", "alt": "Загородный дом с каменной отделкой и садом" }
+      ],
+      "calcPreset": { "buildingType": "house", "floors": "2" }
+    }
+  ]
+}

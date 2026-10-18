@@ -1,0 +1,19 @@
+{
+  "_readme": "Контрольные примеры формулы. answers — ответы анкеты, как их ввёл бы посетитель (id полей из content/calculator.json); вместо answers можно указать готовые params. expect.status — ожидаемый статус ('ok', 'not_configured', 'needs_manual', 'invalid'), expect.total — точная итоговая сумма после округления, expect.breakdown — необязательные строки [{id, amount}]. Пока формула не подключена, здесь один пример-заглушка: после подключения формулы замените его примерами заказчика.",
+  "cases": [
+    {
+      "name": "заглушка: формула не подключена, суммы нет",
+      "answers": {
+        "buildingType": "house",
+        "technology": "frame",
+        "sizeMode": "area",
+        "area": "120",
+        "floors": "1",
+        "package": "warm",
+        "foundation": "piles",
+        "roof": "gable"
+      },
+      "expect": { "status": "not_configured" }
+    }
+  ]
+}

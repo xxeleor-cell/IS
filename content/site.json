@@ -1,0 +1,68 @@
+{
+  "_readme": "Общие данные сайта. Значения в квадратных скобках [ ] — заполнители: build.py выведет их списком, пока они не заменены. Пустая строка \"\" скрывает поле на сайте.",
+
+  "company": {
+    "name": "[Название компании]",
+    "shortName": "[Название]",
+    "legalName": "",
+    "inn": "",
+    "ogrn": ""
+  },
+
+  "seo": {
+    "siteUrl": "https://xxeleor-cell.github.io/IS",
+    "_siteUrl": "Адрес сайта без слеша в конце. Если адрес содержит путь (как /IS на GitHub Pages), все ссылки сайта автоматически строятся от него. При переезде на свой домен укажите, например, https://domen.ru",
+    "defaultTitle": "Строительство загородных домов и бань",
+    "titleSuffix": "[Название компании]",
+    "defaultDescription": "Строительство загородных домов и бань: каркасные дома, дома из бруса и бревна, деревянные и каркасные бани. Каталог проектов и предварительный расчёт стоимости.",
+    "ogImage": "/assets/img/og-default.jpg",
+    "language": "ru"
+  },
+
+  "region": {
+    "name": "[Регион работы]",
+    "inPhrase": "[в регионе]",
+    "note": "[Уточните географию выезда: область, районы, удалённость от города]"
+  },
+
+  "contacts": {
+    "phone": "[+7 000 000-00-00]",
+    "phoneHref": "",
+    "email": "[почта@домен.ru]",
+    "address": "[Адрес офиса или «работаем без офиса»]",
+    "hours": "[Часы работы]",
+    "messengers": [
+      { "id": "telegram", "label": "Telegram", "url": "" },
+      { "id": "whatsapp", "label": "WhatsApp", "url": "" },
+      { "id": "max", "label": "MAX", "url": "" },
+      { "id": "vk", "label": "ВКонтакте", "url": "" }
+    ]
+  },
+
+  "leads": {
+    "_readme": "transport: \"none\" — отправка не подключена (форма честно сообщит об этом и предложит связаться по телефону); \"http\" — POST JSON на endpoint. Успехом считается только ответ 2xx с телом {\"ok\": true}. Пример обработчика: integrations/lead-handler.php",
+    "transport": "none",
+    "endpoint": "/api/lead.php",
+    "timeoutMs": 12000
+  },
+
+  "analytics": {
+    "_readme": "Номер счётчика Яндекс Метрики (только цифры). Пусто — счётчик не подключается. Цели: calc_start, calc_complete, lead_submit, lead_error, phone_click.",
+    "yandexMetrikaId": "",
+    "webvisor": false
+  },
+
+  "legal": {
+    "privacyPolicyUrl": "/politika/",
+    "photoCredit": "Фотографии на сайте — иллюстрации (Unsplash), а не объекты компании. Замените их реальными фото."
+  },
+
+  "nav": [
+    { "label": "Направления", "href": "/#napravleniya" },
+    { "label": "Проекты", "href": "/proekty/" },
+    { "label": "Калькулятор", "href": "/kalkulyator/" },
+    { "label": "Как мы работаем", "href": "/#etapy" },
+    { "label": "Вопросы", "href": "/#voprosy" },
+    { "label": "Контакты", "href": "/kontakty/" }
+  ]
+}

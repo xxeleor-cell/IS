@@ -1,0 +1,221 @@
+{
+  "_readme": "Схема калькулятора: шаги, поля, варианты ответов и правила валидации. Это ПРЕДВАРИТЕЛЬНЫЙ набор полей — окончательный будет определён формулой. Здесь нет цен и коэффициентов: расчёт живёт только в src/assets/js/calculator/pricing.js. Типы полей: cards (выбор одного варианта карточкой), segmented (выбор одного из коротких вариантов), multi (несколько вариантов), number, text. showIf: {field, eq} | {field, in: []} | {field, has} — поле/вариант показывается только при условии. Скрытые поля не проверяются и не передаются в расчёт.",
+
+  "title": "Калькулятор предварительной стоимости",
+  "intro": "Ответьте на несколько вопросов о будущем строении. Любой ответ можно изменить, вернувшись к нужному шагу.",
+
+  "steps": [
+    {
+      "id": "type",
+      "title": "Тип строения",
+      "fields": [
+        {
+          "id": "buildingType",
+          "type": "cards",
+          "label": "Что планируете построить?",
+          "required": true,
+          "options": [
+            { "value": "house", "label": "Жилой дом", "hint": "Для постоянного или сезонного проживания", "image": "demo/wood-house-forest" },
+            { "value": "banya", "label": "Баня", "hint": "Отдельная баня или банный комплекс", "image": "demo/banya-cabin" },
+            { "value": "other", "label": "Другая постройка", "hint": "Гостевой дом, хозблок, мастерская, беседка", "image": "demo/outbuilding-red" }
+          ]
+        },
+        {
+          "id": "otherKind",
+          "type": "segmented",
+          "label": "Какая постройка?",
+          "required": true,
+          "showIf": { "field": "buildingType", "eq": "other" },
+          "options": [
+            { "value": "guest", "label": "Гостевой дом" },
+            { "value": "utility", "label": "Хозблок" },
+            { "value": "workshop", "label": "Мастерская / гараж" },
+            { "value": "gazebo", "label": "Беседка / навес" },
+            { "value": "other", "label": "Другое" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "title": "Технология",
+      "fields": [
+        {
+          "id": "technology",
+          "type": "cards",
+          "label": "Технология строительства",
+          "hint": "Если не уверены — выберите «Нужна консультация», мы поможем сравнить варианты.",
+          "required": true,
+          "options": [
+            { "value": "frame", "label": "Каркас", "hint": "Без усадки, гибкая планировка" },
+            { "value": "beam", "label": "Брус", "hint": "Профилированный или клеёный" },
+            { "value": "log", "label": "Бревно", "hint": "Оцилиндрованное или рубленое" },
+            { "value": "other", "label": "Другой материал", "hint": "Обсудим отдельно" },
+            { "value": "consult", "label": "Нужна консультация", "hint": "Поможем выбрать" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "size",
+      "title": "Размеры и этажность",
+      "fields": [
+        {
+          "id": "sizeMode",
+          "type": "segmented",
+          "label": "Как удобнее указать размер?",
+          "required": true,
+          "default": "area",
+          "options": [
+            { "value": "area", "label": "Площадь" },
+            { "value": "dims", "label": "Длина и ширина" }
+          ]
+        },
+        {
+          "id": "area",
+          "type": "number",
+          "label": "Площадь",
+          "unit": "м²",
+          "hint": "Примерная общая площадь. Её можно уточнить позже.",
+          "required": true,
+          "min": 6,
+          "max": 1000,
+          "step": 0.5,
+          "placeholder": "Например, 120",
+          "showIf": { "field": "sizeMode", "eq": "area" }
+        },
+        {
+          "id": "length",
+          "type": "number",
+          "label": "Длина",
+          "unit": "м",
+          "required": true,
+          "min": 2,
+          "max": 50,
+          "step": 0.1,
+          "placeholder": "Например, 10",
+          "half": true,
+          "showIf": { "field": "sizeMode", "eq": "dims" }
+        },
+        {
+          "id": "width",
+          "type": "number",
+          "label": "Ширина",
+          "unit": "м",
+          "required": true,
+          "min": 2,
+          "max": 50,
+          "step": 0.1,
+          "placeholder": "Например, 8",
+          "half": true,
+          "showIf": { "field": "sizeMode", "eq": "dims" }
+        },
+        {
+          "id": "floors",
+          "type": "segmented",
+          "label": "Этажность",
+          "required": true,
+          "options": [
+            { "value": "1", "label": "1 этаж" },
+            { "value": "1.5", "label": "С мансардой" },
+            { "value": "2", "label": "2 этажа" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "package",
+      "title": "Комплектация",
+      "fields": [
+        {
+          "id": "package",
+          "type": "cards",
+          "label": "Степень готовности",
+          "hint": "Названия и состав комплектаций предварительные и будут уточнены.",
+          "required": true,
+          "options": [
+            { "value": "shell", "label": "Коробка", "hint": "Стены, перекрытия и кровля" },
+            { "value": "warm", "label": "Тёплый контур", "hint": "Закрытый утеплённый контур с окнами и дверями" },
+            { "value": "turnkey", "label": "Под ключ", "hint": "С отделкой и инженерными системами" },
+            { "value": "undecided", "label": "Пока не определились", "hint": "Обсудим варианты" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "base",
+      "title": "Фундамент и кровля",
+      "fields": [
+        {
+          "id": "foundation",
+          "type": "segmented",
+          "label": "Тип фундамента",
+          "hint": "Окончательный выбор зависит от грунта участка.",
+          "required": true,
+          "options": [
+            { "value": "piles", "label": "Винтовые сваи" },
+            { "value": "strip", "label": "Ленточный" },
+            { "value": "slab", "label": "Плита" },
+            { "value": "existing", "label": "Уже есть" },
+            { "value": "unknown", "label": "Не знаю" }
+          ]
+        },
+        {
+          "id": "roof",
+          "type": "segmented",
+          "label": "Форма кровли",
+          "required": true,
+          "options": [
+            { "value": "gable", "label": "Двускатная" },
+            { "value": "shed", "label": "Односкатная" },
+            { "value": "hip", "label": "Вальмовая" },
+            { "value": "complex", "label": "Сложная" },
+            { "value": "unknown", "label": "Не знаю" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extras",
+      "title": "Дополнительно",
+      "fields": [
+        {
+          "id": "extras",
+          "type": "multi",
+          "label": "Дополнительные работы",
+          "hint": "Отметьте всё, что нужно. Можно ничего не выбирать.",
+          "required": false,
+          "options": [
+            { "value": "terrace", "label": "Терраса или веранда" },
+            { "value": "engineering", "label": "Инженерные системы" },
+            { "value": "interior", "label": "Внутренняя отделка" },
+            { "value": "stove", "label": "Печь и дымоход", "showIf": { "field": "buildingType", "eq": "banya" } },
+            { "value": "fireplace", "label": "Камин или печь", "showIf": { "field": "buildingType", "in": ["house", "other"] } },
+            { "value": "design", "label": "Индивидуальный проект" }
+          ]
+        },
+        {
+          "id": "terraceArea",
+          "type": "number",
+          "label": "Площадь террасы",
+          "unit": "м²",
+          "required": false,
+          "min": 2,
+          "max": 300,
+          "step": 0.5,
+          "placeholder": "Если известна",
+          "showIf": { "field": "extras", "has": "terrace" }
+        },
+        {
+          "id": "location",
+          "type": "text",
+          "label": "Где будет участок?",
+          "hint": "Населённый пункт или район — влияет на логистику.",
+          "required": false,
+          "maxLength": 120,
+          "placeholder": "Например, район или посёлок"
+        }
+      ]
+    }
+  ]
+}
